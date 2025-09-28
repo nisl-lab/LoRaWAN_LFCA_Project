@@ -30,26 +30,41 @@ The implementation is based on the following open-source projects:
 ## Project Structure
 
 ```
-├── firmware/
-│   └── end-device/           # Modified LoRaMac-node with custom MAC algorithms
-├── gateway/                  # Gateway configuration files
-├── network-server/           # ChirpStack deployment configurations  
-├── analysis/                 # Data analysis and visualization scripts
-└── docs/                     # Documentation and setup guides
+├── LoRaMac-node-master/      # Modified LoRaMac-node with custom MAC algorithms
+│   ├── .vscode/              
+│   ├── build/                # Build output files
+│   ├── cmake/                # CMake configuration files
+│   └── src/                  # Source code with custom MAC implementations
+├── chirpstack/               # ChirpStack network server components
+│   ├── chirpstack-application-server/
+│   ├── chirpstack-certificates/
+│   ├── chirpstack-gateway-bridge/
+│   └── chirpstack-network-server/
+└── gateway/                  # Gateway implementation
+    ├── lora_gateway-master/  # LoRa gateway library
+    └── packet_forwarder-master/  # Packet forwarder implementation
 ```
 
 ## Setup Instructions
 
-### End Device
-1. Modify the LoRaMac-node firmware with custom MAC layer algorithms
-2. Configure for KR920 frequency plan
-3. Flash to NUCLEO-L476RG boards
+### End Device (LoRaMac-node-master)
+1. Navigate to `LoRaMac-node-master/src/` 
+2. Modify the source code with custom MAC layer algorithms
+3. Configure for KR920 frequency plan
+4. Build using CMake and flash to NUCLEO-L476RG boards
 
-### Gateway & Network Server
-For gateway and network server setup, refer to the official documentation:
-- **Gateway Setup**: Follow Semtech LoRa Gateway documentation [2]
-- **Packet Forwarder**: Configure using Semtech Packet Forwarder guide [3]
-- **ChirpStack**: Install and configure according to ChirpStack documentation [4]
+### Gateway
+- **LoRa Gateway Library**: Configure `gateway/lora_gateway-master/` following Semtech documentation [2]
+- **Packet Forwarder**: Setup `gateway/packet_forwarder-master/` using Semtech guide [3]
+
+### Network Server (ChirpStack)
+Configure the ChirpStack components in the `chirpstack/` directory:
+- **Application Server**: `chirpstack-application-server/`
+- **Network Server**: `chirpstack-network-server/`  
+- **Gateway Bridge**: `chirpstack-gateway-bridge/`
+- **Certificates**: Use certificates from `chirpstack-certificates/`
+
+Refer to ChirpStack documentation [4] for detailed setup instructions.
 
 ## Usage
 
