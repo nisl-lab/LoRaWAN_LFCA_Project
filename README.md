@@ -76,9 +76,10 @@ Refer to ChirpStack documentation [4] for detailed setup instructions.
 ## Custom MAC Algorithms
 
 The repository includes implementations of:
-- CSMA with Channel Activity Detection (CSMA-CAD)
-- Q-Learning based MAC protocols
-- [Additional custom algorithms as implemented]
+- ALOHA based LoRaWAN Class A
+- TR-013 based CSMA MAC protocol
+- Look Forward Collision Avoidance MAC protocol
+- RL based LFCA MAC protocol
 
 ## References
 
